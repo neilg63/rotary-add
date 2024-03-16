@@ -44,8 +44,13 @@ macro_rules! impl_rotary_add {
     };
 }
 
+// Implement for u8, max 255 (value range 256)
 impl_rotary_add!(u8, u16, u8::MAX);
+
+// Implement for u16, max 65535 (value range 65536)
 impl_rotary_add!(u16, u32, u16::MAX);
+
+// Implement for u32, max 4294967295 (value range 4294967296)
 impl_rotary_add!(u32, u64, u32::MAX);
 
 #[cfg(test)]
