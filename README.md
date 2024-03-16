@@ -24,7 +24,7 @@ let result = first_number.rotary_sub(&second_number);
 // yields 253. first_number - second_number would panic as the value would overflow
 ```
 
-Unlike the related Ring360 crate, this library only extends core unsigned integer types for use with cryptography and as a building block for other crates, e.g. converting characters first to u32 values and then shifting their values in one direction in the encoding stage and reversing the process in the decoding stage. 
+Unlike the related [Ring360](https://crates.io/crates/ring360) crate, this library only extends core unsigned integer types for use with cryptography and as a building block for other crates, e.g. converting characters first to u32 values and then shifting their values in one direction in the encoding stage and reversing the process in the decoding stage. 
 
 ## Dev notes
 This is an alpha release.
