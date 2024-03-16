@@ -1,0 +1,12 @@
+[package]
+name = "rotary-add"
+version = "0.1.0"
+edition = "2021"
+description = "This crate adds two simple methods (rotary_add and rotary_sub) to the three of the main unsigned integer types Rust, u8, u16 and u32 to allow cyclical or rotary addition around the same 0 to MAX range"
+repository = "https://github.com/neilg63/ring360"
+categories = ["mathematics", "cryptography"]
+license = "GPL-2.0-or-later WITH Bison-exception-2.2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
