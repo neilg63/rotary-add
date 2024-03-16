@@ -16,7 +16,7 @@ pub trait RotaryAdd<T: Add<Output = T> + Sub<Output = T> + PartialEq + Copy> {
   /// 3.rotary_sub(4) is thus 255
   fn rotary_sub(&self, other: &T) -> T;
 }
-/// Define macro to implement the above for u8, u16 and u32
+/// Macro to implement the above for u8, u16 and u32
 macro_rules! impl_rotary_add {
     ($t:ty,$u:ty, $max:expr) => {
         impl RotaryAdd<$t> for $t {
