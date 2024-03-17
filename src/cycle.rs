@@ -1,12 +1,10 @@
 use std::ops::{Add, Sub};
 
 /// Trait with methods for cyclical arithmetic with unsigned integers
-/// When additions or subtractions may otherwise overflow, 
-/// either falling below zero or above the specified base, 
-/// the values rotate. This is mainly for use with cryptography
+/// Values rotate within a range of zero to 1 below the specified base, 
+/// when normal addition or subtraction would yield out-of-range values
 pub trait CycleAdd<T: Add<Output = T> + Sub<Output = T> + PartialEq + Copy> {
-  /// Add another unsigned integer and start from zero again should value overflow,
-  /// but retaining the remainder 
+  /// Add another unsigned integer and start from zero again if the result is out of range.
   /// With a a base of 60 applied to a u8 value, 53.cycle_add(10, 60) is thus 3
   fn cycle_add(&self, other: &T, base: T) -> T;
 
