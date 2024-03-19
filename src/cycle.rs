@@ -14,32 +14,85 @@ pub trait CycleAdd<T: Add<Output = T> + Sub<Output = T> + PartialEq + Copy> {
   /// 3.cycle_sub(4) is thus 23
   fn cycle_sub(&self, other: &T, base: T) -> T;
 
+  /// Add another unsigned integer representing a 
+  /// number in a series from 1 to specified maximum
+  /// Unlike cycle_add the max value is the limit 
+  /// and the minimum value is 1. Hence 1.series_add(7, 1) will be 1
+  fn series_add(&self, other: &T, limit: T) -> T;
+
+  /// Subtract another unsigned integer representing a 
+  /// number in a series from 1 to specified maximum
+  /// Unlike cycle_sub the max value is the limit 
+  /// and the minimum value is 1. Hence 1.series_sub(1, 7) will be 7
+  fn series_sub(&self, other: &T, limit: T) -> T;
+
+  /// Find the remainder in a range between one and a limit.
+  /// This methods normalises an unsigned integer within a series  
+  /// from 1 to specified limit
+  /// Unlike % or T.mod(T) 0.series_mod(&T) will equal the limit as results cannot be lower than 1
+  /// This is mainly used for arbitrary series like weekday numbers 1 to 7 or month numbers 1 to 31
+  /// The specified limit may be no higher than the unsigned type's MAX
+  /// e.g. 255 for u8
+  fn series_mod(&self,  limit: T) -> T;
+
 }
 
 /// Macro to implement the above for u8, u16 and u32
 macro_rules! impl_cycle_add {
     ($t:ty,$u:ty) => {
-        impl CycleAdd<$t> for $t {
-            fn cycle_add(&self, other: &$t, base: $t) -> $t {
-              let b2 = base as $u;
-              let result: $u = *self as $u + *other as $u;
-              if result < b2 {
-                result as $t
-              } else {
-                (result % base as $u) as $t
-              }
-            }
+      impl CycleAdd<$t> for $t {
+        fn cycle_add(&self, other: &$t, base: $t) -> $t {
+          let b2 = base as $u;
+          let result: $u = *self as $u + *other as $u;
+          if result < b2 {
+            result as $t
+          } else {
+            (result % base as $u) as $t
+          }
+        }
 
-            fn cycle_sub(&self, other: &$t, base: $t) -> $t {
-                if *self < *other {
-                  let b2 = base as $u;
-                  let result = b2 + *self as $u - *other as $u ;
-                  (result % b2) as $t
-                } else {
-                    *self - (*other % base)
-                }
+        fn cycle_sub(&self, other: &$t, base: $t) -> $t {
+            if *self < *other {
+              let b2 = base as $u;
+              let result = b2 + *self as $u - *other as $u ;
+              (result % b2) as $t
+            } else {
+                *self - (*other % base)
             }
         }
+
+        fn series_add(&self, other: &$t, limit: $t) ->  $t {
+          let start_val = *self  - 1;
+          let b2 = limit as $u;
+          let result: $u = start_val as $u + *other as $u;
+          if result < b2 {
+            result as $t + 1
+          } else {
+            (result % limit as $u) as $t + 1
+          }
+        }
+
+
+        fn series_sub(&self, other: &$t, limit: $t) ->  $t {
+          let start_val = *self  - 1;
+          if start_val < *other {
+            let b2 = limit as $u;
+            let result = b2 + start_val as $u - *other as $u ;
+            (result % b2) as $t + 1
+          } else {
+              start_val - (*other % limit) + 1
+          }
+        }
+
+        fn series_mod(&self, limit: $t) ->  $t {
+          let result = *self % limit;
+          if result < 1 {
+            limit
+          } else {
+            result
+          }
+        }
+      }
     };
 }
 

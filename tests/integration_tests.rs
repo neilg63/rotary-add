@@ -93,3 +93,31 @@ fn test_cycle_sub_u16() {
   let expected = 12_384;
   assert_eq!(result, expected);
 }
+
+
+#[test]
+fn test_series_add_u8() {
+  let num_1: u8 = 6;
+  let num_2: u8 = 2;
+  let result = num_1.series_add(&num_2, 7);
+  let expected = 1;
+  assert_eq!(result, expected);
+}
+
+#[test]
+fn test_series_sub_u8() {
+  let num_1: u8 = 2;
+  let num_2: u8 = 6;
+  let result = num_1.series_sub(&num_2, 7);
+  let expected = 3;
+  assert_eq!(result, expected);
+}
+
+
+#[test]
+fn test_series_mod_u8() {
+  let num_1: u8 = 10;
+  let result = num_1.series_mod(7);
+  let expected = 3;
+  assert_eq!(result, expected);
+}
