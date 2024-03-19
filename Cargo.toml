@@ -1,8 +1,8 @@
 [package]
 name = "rotary-add"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
-description = "This crate adds 4 simple methods (rotary_add, rotary_sub, cycle_add and cycle_sub) to the three lowest unsigned integer types, u8, u16 and u32 to allow cyclical addition and subtraction around the same 0 to MAX range"
+description = "This crate adds a few simple methods to the three lowest unsigned integer types, u8, u16 and u32 to allow cyclical addition and subtraction around the same 0 to (limit - 1) range or from 1 to a limit"
 repository = "https://github.com/neilg63/ring360"
 categories = ["mathematics", "cryptography"]
 license = "GPL-2.0-or-later WITH Bison-exception-2.2"
