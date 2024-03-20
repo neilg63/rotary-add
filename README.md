@@ -4,7 +4,7 @@
 
 # RotaryAdd: Cyclical arithemtic with unsigned integers
 
-This crate provides 2 traits, RotaryAdd and CyccleAdd, with two simple methods to apply cyclical or modular addition and subtraction with three unsigned integer types, u8, u16 and u32. Unlike the default + and - operators, additions and subtractions never overflow.
+This crate provides 2 traits, RotaryAdd and CyccleAdd, with simple methods to apply cyclical or modular addition and subtraction with three unsigned integer types, u8, u16 and u32. Unlike the default + and - operators, additions and subtractions never overflow.
 
 ## RotaryAdd
 
@@ -64,8 +64,9 @@ let sample_month_2: u8 = 3;
 let result = sample_month_2.series_sub(3, limit);
 // yields 12
 
-let sample_month_value: u8 = 24; // two years
+let sample_month_value: u8 = 24; // 24th month
 let result = sample_month_value.series_mod(limit);
+// yields 12, but would yield 0 with 0-indexed modulus
 
 ```
 Unlike the related [Ring360](https://crates.io/crates/ring360) crate, this library only extends core unsigned integer types for use with cryptography and as a building block for other crates, e.g. converting characters first to u32 values and then shifting their values in one direction in the encoding stage and reversing the process in the decoding stage. 
