@@ -73,5 +73,5 @@ Unlike the related [Ring360](https://crates.io/crates/ring360) crate, this libra
 ## Dev notes
 This is an alpha release.
 
-### 0.1.5
+### 0.1.2
 - Added series_add(), series_sub(), series_mod() methods.
