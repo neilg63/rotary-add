@@ -35,7 +35,7 @@ This trait provides addition and subtraction methods that let you define a custo
 
 These examples show the concept:
 
-Addition:
+#### Addition:
 ```rust
 let first_number: u8 = 22;
 let second_number: u8 = 6;
@@ -44,7 +44,7 @@ let result = first_number.cycle_add(&second_number, 24);
 // yields 4. We have to use u8 as a primitive data type, but
 ```
 
-Subtraction
+#### Subtraction
 
 ```rust
 let first_number: u8 = 37;
@@ -53,7 +53,25 @@ let result = first_number.cycle_sub(&second_number, 100);
 // yields 59. first_number - second_number would panic as the value would overflow
 ```
 
+#### Serial addition, subtraction and modulus, starting from 1
+Many common series start from one. The days of the month and week are commonly expressed with the numerals 1 to the maximum. Alas this does not work with modular arithmetic where additions or subtractions overflow. If 1 means Monday and 7 means Sunday, we'd expect *2 (Tue) - 3* to equal 7 (Sun) and *6 (Sat) + 1* to equal 7 (Sun). Instead we need to subtract one from the input number, that may be no lower than 1, mod it by the maximum number and then add 1 to the result. The series_add(), series_sub() and series_mod() methods avoid the need for these conversions when dealing with 1-based serial inputs.
+```rust
+let sample_month_1: u8 = 11;
+let limit = 12; // months of the year
+let result = sample_month_1.series_add(1, limit);
+// yields 12. 
+let sample_month_2: u8 = 3;
+let result = sample_month_2.series_sub(3, limit);
+// yields 12
+
+let sample_month_value: u8 = 24; // two years
+let result = sample_month_value.series_mod(limit);
+
+```
 Unlike the related [Ring360](https://crates.io/crates/ring360) crate, this library only extends core unsigned integer types for use with cryptography and as a building block for other crates, e.g. converting characters first to u32 values and then shifting their values in one direction in the encoding stage and reversing the process in the decoding stage. 
 
 ## Dev notes
 This is an alpha release.
+
+### 0.1.5
+- Added series_add(), series_sub(), series_mod() methods.
