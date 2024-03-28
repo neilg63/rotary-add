@@ -4,7 +4,7 @@
 
 # RotaryAdd: Cyclical arithemtic with unsigned integers
 
-This crate provides 2 traits, RotaryAdd and CyccleAdd, with simple methods to apply cyclical or modular addition and subtraction with three unsigned integer types, u8, u16 and u32. Unlike the default + and - operators, additions and subtractions never overflow.
+This crate provides 3 traits, *RotaryAdd*,  *CycleAdd* and *SeriesAdd*, with simple methods to apply cyclical or modular addition and subtraction with three unsigned integer types, u8, u16 and u32. Unlike the default + and - operators, additions and subtractions never overflow.
 
 ## RotaryAdd
 
