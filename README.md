@@ -54,7 +54,7 @@ let result = first_number.cycle_sub(&second_number, 100);
 ```
 
 #### Serial addition, subtraction and modulus, starting from 1
-Many common series start from one. The days of the month and week are commonly expressed with the numerals 1 to the maximum. Alas this does not work with modular arithmetic where additions or subtractions overflow. If 1 means Monday and 7 means Sunday, we'd expect *2 (Tue) - 3* to equal 7 (Sun) and *6 (Sat) + 1* to equal 7 (Sun). Instead we need to subtract one from the input number, that may be no lower than 1, mod it by the maximum number and then add 1 to the result. The series_add(), series_sub() and series_mod() methods avoid the need for these conversions when dealing with 1-based serial inputs.
+Many common series start from one. The months of a year, days of a month and weekdays are commonly expressed with the numerals 1 to the maximum. Alas this does not work with modular arithmetic where additions or subtractions overflow. If 1 means Monday and 7 means Sunday, we'd expect *2 (Tue) - 3* to equal 7 (Sun) and *6 (Sat) + 1* to equal 7 (Sun). Instead we need to subtract one from the input number, that may be no lower than 1, mod it by the maximum number and then add 1 to the result. The ```series_add()```, ```series_sub()``` and ```series_mod()``` methods avoid the need for these conversions when dealing with 1-based series.
 ```rust
 let sample_month_1: u8 = 11;
 let limit = 12; // months of the year
@@ -69,10 +69,10 @@ let result = sample_month_value.series_mod(limit);
 // yields 12, but would yield 0 with 0-indexed modulus
 
 ```
-Unlike the related [Ring360](https://crates.io/crates/ring360) crate, this library only extends core unsigned integer types for use with cryptography and as a building block for other crates, e.g. converting characters first to u32 values and then shifting their values in one direction in the encoding stage and reversing the process in the decoding stage. 
+Unlike the related [Ring360](https://crates.io/crates/ring360) crate, this library only extends core unsigned integer types for use with cryptography, metrology and as a building block for other crates, e.g. converting characters first to u32 values and then shifting their values in one direction in the encoding stage and reversing the process in the decoding stage. 
 
 ## Dev notes
-This is an alpha release, but otherwise feature-complete.
+This is an alpha release, but is otherwise feature-complete.
 
 ### 0.1.2
 - Added series_add(), series_sub(), series_mod() methods.
