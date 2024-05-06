@@ -2,7 +2,7 @@
 [![crates.io](https://img.shields.io/crates/v/rotary-add.svg)](https://crates.io/crates/rotary-add)
 [![docs.rs](https://docs.rs/rotary-add/badge.svg)](https://docs.rs/rotary-add)
 
-# RotaryAdd: Cyclical arithemtic with unsigned integers
+# RotaryAdd: Cyclical arithmetic with unsigned integers
 
 This crate provides 3 traits, *RotaryAdd*,  *CycleAdd* and *SeriesAdd*, with simple methods to apply cyclical or modular addition and subtraction with three unsigned integer types, u8, u16 and u32. Unlike the default + and - operators, additions and subtractions never overflow.
 
