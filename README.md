@@ -4,12 +4,12 @@
 
 # RotaryAdd: Cyclical arithmetic with unsigned integers
 
-This crate provides 3 traits, *RotaryAdd*,  *CycleAdd* and *SeriesAdd*, with simple methods to apply cyclical or modular addition and subtraction with three unsigned integer types, u8, u16 and u32. Unlike the default + and - operators, additions and subtractions never overflow.
+This crate provides 3 traits, ```RotaryAdd```,  ```CycleAdd``` and ```SeriesAdd```, with simple methods to apply cyclical or modular addition and subtraction with three unsigned integer types, u8, u16 and u32. Unlike the default ```+``` and ```-``` operators, additions and subtractions never overflow.
 
 ## RotaryAdd
 
 This trait has addition and subtraction methods that act on the whole range of an unsigned integer, e.g. from *0 to 255* for *u8* or from *0 to 65535* for *u16*.
-This example with an 8-bit unsigned integer illustrates the concept with the rotary_add and rotary_sub methods:
+This example with an 8-bit unsigned integer illustrates the concept with the ```rotary_add``` and ```rotary_sub``` methods:
 
 Addition:
 ```rust
