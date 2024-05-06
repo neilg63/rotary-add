@@ -9,7 +9,7 @@ This crate provides 3 traits, ```RotaryAdd```,  ```CycleAdd``` and ```SeriesAdd`
 ## RotaryAdd
 
 This trait has addition and subtraction methods that act on the whole range of an unsigned integer, e.g. from *0 to 255* for *u8* or from *0 to 65535* for *u16*.
-This example with an 8-bit unsigned integer illustrates the concept with the ```rotary_add``` and ```rotary_sub``` methods:
+This example with an 8-bit unsigned integer illustrates the concept with ```rotary_add``` and ```rotary_sub```:
 
 Addition:
 ```rust
@@ -72,7 +72,7 @@ let result = sample_month_value.series_mod(limit);
 Unlike the related [Ring360](https://crates.io/crates/ring360) crate, this library only extends core unsigned integer types for use with cryptography and as a building block for other crates, e.g. converting characters first to u32 values and then shifting their values in one direction in the encoding stage and reversing the process in the decoding stage. 
 
 ## Dev notes
-This is an alpha release.
+This is an alpha release, but otherwise feature-complete.
 
 ### 0.1.2
 - Added series_add(), series_sub(), series_mod() methods.
