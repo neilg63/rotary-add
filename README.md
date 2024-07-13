@@ -41,7 +41,7 @@ let first_number: u8 = 22;
 let second_number: u8 = 6;
 
 let result = first_number.cycle_add(&second_number, 24);
-// yields 4. We have to use u8 as a primitive data type, but
+// yields 4. We have to use u8 as a primitive data type with a higher maximum value
 ```
 
 #### Subtraction

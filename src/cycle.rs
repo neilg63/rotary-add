@@ -28,7 +28,7 @@ pub trait CycleAdd<T: Add<Output = T> + Sub<Output = T> + PartialEq + Copy> {
 
   /// Find the remainder in a range between one and a limit.
   /// This methods normalises an unsigned integer within a series  
-  /// from 1 to specified limit
+  /// from 1 to a specified limit
   /// Unlike % or T.mod(T) 0.series_mod(&T) will equal the limit as results cannot be lower than 1
   /// This is mainly used for arbitrary series like weekday numbers 1 to 7 or month numbers 1 to 31
   /// The specified limit may be no higher than the unsigned type's MAX
