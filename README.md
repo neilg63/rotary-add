@@ -2,9 +2,9 @@
 [![Crates.io](https://img.shields.io/crates/v/rotary-add.svg)](https://crates.io/crates/rotary-add)
 [![Docs.rs](https://docs.rs/rotary-add/badge.svg)](https://docs.rs/rotary-add)
 
-# RotaryAdd: Cyclical Arithmetic with Unsigned Integers and Arbitrary Ranges
+# Cyclical Arithmetic with Unsigned Integers and Arbitrary Ranges
 
-`RotaryAdd` is a Rust crate that provides an extension trait, `CycleAdd`, for performing cyclical (modular) addition and subtraction with unsigned integer types (`u8`, `u16`, and `u32`). Unlike the default `+` and `-` operators, these operations never overflow.
+This library crate provides an extension trait, `CycleAdd`, for performing cyclical (modular) addition and subtraction with unsigned integer types (`u8`, `u16`, and `u32`). Unlike the default `+` and `-` operators, these operations never overflow.
 
 ## Features
 
