@@ -4,7 +4,7 @@
 
 # Cyclical Arithmetic with Unsigned Integers and Arbitrary Ranges
 
-This library crate provides an extension trait, `CycleAdd`, for performing cyclical (modular) addition and subtraction with unsigned integer types (`u8`, `u16`, and `u32`). Unlike the default `+` and `-` operators, these operations never overflow.
+This library crate provides an extension trait, `CycleAdd`, for performing cyclical (modular) addition and subtraction with unsigned integer types (`u8`, `u16`, and `u32`). Unlike the default `+` and `-` operators, these operations never overflow below zero or beyond the defined modulus.
 
 ## Features
 
@@ -19,16 +19,15 @@ This library crate provides an extension trait, `CycleAdd`, for performing cycli
 let first_number: u8 = 22;
 let second_number: u8 = 6;
 
-let result = first_number.cycle_add(&second_number, 24);
+let result = first_number.cycle_add(second_number, 24);
 // Result: 4 (22 + 6 wraps around at 24)
 ```
 
 ### Cyclical Subtraction
 ```rust
 let first_number: u8 = 37;
-let second_number: u8 = 78;
 
-let result = first_number.cycle_sub(&second_number, 100);
+let result = first_number.cycle_sub(78, 100);
 // Result: 59 (37 - 78 wraps around at 100)
 ```
 
@@ -60,6 +59,9 @@ Unlike the [Ring360](https://crates.io/crates/ring360) crate, `RotaryAdd` focuse
 - Building blocks for other crates (e.g., encoding/decoding operations)
 
 ### Changelog
+
+#### Version 0.2.1
+- Corrections to README.md and tests only.
 
 #### Version 0.2.0
 - Removed `T.rotary_add(&T)` and `T.rotary_sub(&T)` as they were functionally equivalent to `T.wrapping_add(T)` and `T.wrapping_sub(T)` in the Rust core library (but with the first parameter passed by reference).

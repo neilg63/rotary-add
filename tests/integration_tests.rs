@@ -2,7 +2,6 @@
 
 use rotary_add::*;
 
-
 #[test]
 fn test_cycle_add_u8() {
   // Addition of 35 and 29 with base 60 should overflow to 4
@@ -15,12 +14,23 @@ fn test_cycle_add_u8() {
 
 #[test]
 fn test_cycle_sub_u16() {
-  // Subtracting 24,000 from 20,000 with base 16,384 (2 ^ 14) )hould overflow to 12,384
+  // Subtracting 24,000 from 20,000 with base 16,384 (2 ^ 14) ) should overflow to 12,384
   let num_1: u16 = 20_000;
   let num_2: u16 = 24_000;
   let base: u16 = 16_384;
   let result = num_1.cycle_sub(num_2, base);
   let expected = 12_384;
+  assert_eq!(result, expected);
+}
+
+#[test]
+fn test_cycle_add_u32() {
+  // Subtracting 24,000 from 20,000 with base 16,384 (2 ^ 14) ) should overflow to 12,384
+  let num_1: u32 = 15_000_000;
+  let num_2: u32 = 4_000_000;
+  let base: u32 = 16_777_216; // 2 ^ 14
+  let result = num_1.cycle_add(num_2, base);
+  let expected = 2222784;
   assert_eq!(result, expected);
 }
 
