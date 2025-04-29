@@ -4,7 +4,7 @@
 
 # Cyclical Arithmetic with Unsigned Integers and Arbitrary Ranges
 
-This library crate provides an extension trait, `CycleAdd`, for performing cyclical (modular) addition and subtraction with unsigned integer types (`u8`, `u16`, and `u32`). Unlike the default `+` and `-` operators, these operations never overflow below zero or beyond the defined modulus.
+This library crate provides an extension trait, `CycleAdd`, for performing cyclical (modular) addition and subtraction with unsigned integer types (`u8`, `u16`, and `u32`). Unlike the default `+` and `-` operators, these operations never overflow below zero or beyond the defined modulus.mo
 
 ## Features
 
@@ -61,15 +61,11 @@ Unlike the [Ring360](https://crates.io/crates/ring360) crate, `RotaryAdd` focuse
 ### Changelog
 
 #### Version 0.2.1
-- Corrections to README.md and tests only.
+- Corrections to README.md, comments and tests only.
 
 #### Version 0.2.0
 - Removed `T.rotary_add(&T)` and `T.rotary_sub(&T)` as they were functionally equivalent to `T.wrapping_add(T)` and `T.wrapping_sub(T)` in the Rust core library (but with the first parameter passed by reference).
-- All remaining extension methods now take the first parameter by value, consistent with `wrapping_add` and `wrapping_sub`.
+- All remaining trait methods now take the first parameter by value, consistent with other arithmetic methods in the standard library.
 
 #### Version 0.1.2
 - Added `series_add`, `series_sub`, and `series_mod` methods for 1-based series operations.
-
----
-
-For more details, visit the [documentation](https://docs.rs/rotary-add) or the [GitHub repository](https://github.com/neilg63/rotary-add).
