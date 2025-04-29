@@ -1,14 +1,14 @@
 use std::ops::{Add, Sub};
 
 /// Trait with methods for cyclical arithmetic with unsigned integers
-/// Values rotate within a range of zero to 1 below the specified base, 
+/// Values rotate within a range of zero to 1 below the specified modulus, 
 /// when normal addition or subtraction would yield out-of-range values
 pub trait CycleAdd<T: Add<Output = T> + Sub<Output = T> + PartialEq + Copy> {
   /// Add another unsigned integer and start from zero again if the result is out of range.
-  /// With a a base of 60 applied to a u8 value, 53.cycle_add(10, 60) is thus 3
+  /// With a base of 60 applied to a u8 value, 53.cycle_add(10, 60) is thus 3
   fn cycle_add(&self, other: T, base: T) -> T;
 
-  /// Subtract another unsigned integer and start from a specified base 
+  /// Subtract another unsigned integer and start from a specified modulus 
   /// if the target result may be otherwise be negative if it were a signed integer
   /// e.g. if a base of 24 is applied to a u8 value, its max is 23
   /// 3.cycle_sub(4) is thus 23
@@ -26,10 +26,9 @@ pub trait CycleAdd<T: Add<Output = T> + Sub<Output = T> + PartialEq + Copy> {
   /// and the minimum value is 1. Hence 1.series_sub(1, 7) will be 7
   fn series_sub(&self, other: T, limit: T) -> T;
 
-  /// Find the remainder in a range between one and a limit.
-  /// This methods normalises an unsigned integer within a series  
-  /// from 1 to a specified limit
-  /// Unlike % or T.mod(T) 0.series_mod(&T) will equal the limit as results cannot be lower than 1
+  /// Find the remainder in a range between one and a limit (modulus).
+  /// This method normalises an unsigned integer within a 1-based series.
+  /// Unlike % or T.mod(T) 0.series_mod(&T) will equal the modulus as results cannot be lower than 1.
   /// This is mainly used for arbitrary series like weekday numbers 1 to 7 or month numbers 1 to 31
   /// The specified limit may be no higher than the unsigned type's MAX
   /// e.g. 255 for u8
